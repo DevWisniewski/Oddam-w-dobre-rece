@@ -31,3 +31,9 @@ def login1(request):
 
 def register1(request):
     return render(request, 'register1.html')
+
+def base(request):
+    return render(request, 'base.html')
+
+def base_static(request):
+    return render(request, 'base_static.html')
