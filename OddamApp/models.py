@@ -1,6 +1,7 @@
 from django.db import models
 from django.conf import settings
 
+
 class Category(models.Model):
     """
     Model kategorii, który przechowuje różne kategorie darów, które mogą być przekazywane.
@@ -9,6 +10,7 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Institution(models.Model):
     """
@@ -35,6 +37,7 @@ class Institution(models.Model):
 
     def __str__(self):
         return self.name
+
 
 class Donation(models.Model):
     """
