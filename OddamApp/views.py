@@ -16,7 +16,7 @@ def form_confirmation(request):
     return render(request, 'form-confirmation.html')
 
 
-# to sa widoki testowe
+# to są widoki testowe
 def form1(request):
     return render(request, 'form1.html')
 

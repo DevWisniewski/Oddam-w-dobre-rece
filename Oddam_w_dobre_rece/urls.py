@@ -12,7 +12,7 @@ urlpatterns = [
     path('form-confirmation/', views.form_confirmation, name='form-confirmation'),
 
     # ścieżki do widoków generowanych przy pomocy base.html
-    path('index1/', views.index1, name='index1'),
+    path('', views.index1, name='index1'),
     path('login1/', views.login1, name='login1'),
     path('register1/', views.register1, name='register1'),
     path('form1/', views.form1, name='form1'),

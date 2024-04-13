@@ -1,5 +1,4 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -10,23 +9,21 @@
     <link rel="stylesheet" href="{% static 'css/style1.css' %}" />
 </head>
 <body>
-    <header>
-        {% block header %}
-        <nav class="container container--70">
-            <ul class="nav--actions">
-                {% block navactions %}
-                <!-- Zawartość sekcji nav-actions -->
-                {% endblock %}
-            </ul>
+    {% block header %}
+    <nav class="container container--70">
+        <ul class="nav--actions">
+            {% block navactions %}
+            <!-- Zawartość sekcji nav-actions -->
+            {% endblock %}
+        </ul>
 
-            <ul>
-                {% block navlinks %}
-                <!-- Zawartość sekcji nav-links -->
-                {% endblock %}
-            </ul>
-        </nav>
-        {% endblock %}
-    </header>
+        <ul>
+            {% block navlinks %}
+            <!-- Zawartość sekcji nav-links -->
+            {% endblock %}
+        </ul>
+    </nav>
+    {% endblock %}
 
     {% block content %}
     <!-- Główna treść strony wstawiana przez szablony dziedziczące po base.html -->
