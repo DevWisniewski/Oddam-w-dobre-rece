@@ -1,0 +1,23 @@
+[33mcommit 013b21c0a0aaca0e79e8a5bfe9f42d22d97aaa5b[m[33m ([m[1;36mHEAD -> [m[1;32mfeature-0.2[m[33m, [m[1;31morigin/develop[m[33m, [m[1;32mfeature-2.1[m[33m, [m[1;32mfeature-1[m[33m)[m
+Author: DevWisniewski <grzegorz.wisniewski.office@gmail.com>
+Date:   Tue Apr 9 15:16:35 2024 +0200
+
+    Dodano ładowanie js
+
+[33mcommit ea9ac7fe46374d48d6a3e3807638615f60ac9e00[m
+Author: DevWisniewski <grzegorz.wisniewski.office@gmail.com>
+Date:   Tue Apr 9 06:15:29 2024 +0200
+
+    Dodano ładowanie plików statycznych
+
+[33mcommit 2ff3f96fb0a5be610e57424b474571f964985eb2[m[33m ([m[1;32mfeature-0.1[m[33m)[m
+Author: DevWisniewski <grzegorz.wisniewski.office@gmail.com>
+Date:   Mon Apr 8 14:19:06 2024 +0200
+
+    Zmieniono pliki html by kożystały z base.html
+
+[33mcommit 929886df302f54a0feb63d9d9dcc8c546ef5c0d7[m[33m ([m[1;32mdevelop[m[33m)[m
+Author: DevWisniewski <grzegorz.wisniewski.office@gmail.com>
+Date:   Sat Apr 6 23:32:57 2024 +0200
+
+    Podstawowa konfiguracja projektu
