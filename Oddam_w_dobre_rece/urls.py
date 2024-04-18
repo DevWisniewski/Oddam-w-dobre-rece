@@ -13,6 +13,4 @@ urlpatterns = [
 
     path('base/', views.base, name='base'),
 
-
-
 ]

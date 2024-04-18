@@ -23,3 +23,4 @@ def form_confirmation(request):
 
 def base(request):
     return render(request, 'base.html')
+
