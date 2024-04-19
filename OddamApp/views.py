@@ -7,9 +7,17 @@ def index(request):
     total_bags = Donation.objects.aggregate(Sum('quantity'))['quantity__sum'] or 0
     supported_organizations = Institution.objects.count()
 
+    # Pobieranie instytucji według typu
+    foundations = Institution.objects.filter(type=Institution.FUNDACJA)
+    ngos = Institution.objects.filter(type=Institution.ORGANIZACJA_POZARZADOWA)
+    local_collections = Institution.objects.filter(type=Institution.ZBIORKA_LOKALNA)
+
     context = {
         'total_bags': total_bags,
         'supported_organizations': supported_organizations,
+        'foundations': foundations,
+        'ngos': ngos,
+        'local_collections': local_collections,
     }
     return render(request, 'index.html', context)
 
