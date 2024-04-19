@@ -60,7 +60,7 @@
      * TODO: callback to page change event
      */
     changePage(e) {
-      e.preventDefault();
+       // e.preventDefault(); // Wyłączono, aby umożliwić standardowe działanie linków w paginacji
       const page = e.target.dataset.page;
 
       console.log(page);
