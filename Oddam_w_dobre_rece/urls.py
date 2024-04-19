@@ -5,21 +5,12 @@ from OddamApp import views
 urlpatterns = [
     path('admin/', admin.site.urls),
 
-    path('index/', views.index, name='index'),
+    path('', views.index, name='index'),
     path('login/', views.login, name='login'),
     path('register/', views.register, name='register'),
     path('form/', views.form, name='form'),
     path('form-confirmation/', views.form_confirmation, name='form-confirmation'),
 
-    # ścieżki do widoków generowanych przy pomocy base.html
-    path('', views.index1, name='index1'),
-    path('login1/', views.login1, name='login1'),
-    path('register1/', views.register1, name='register1'),
-    path('form1/', views.form1, name='form1'),
-    path('form-confirmation1/', views.form_confirmation1, name='form-confirmation1'),
-
     path('base/', views.base, name='base'),
-    path('base_static/', views.base_static, name='base_static'),
-
 
 ]

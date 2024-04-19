@@ -4,3 +4,6 @@ node_modules
 package-lock.json
 project
 *.pyc
+.venv/
+OddamApp/templates/TESTY/
+OddamApp/scripts/

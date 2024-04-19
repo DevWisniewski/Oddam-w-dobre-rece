@@ -1,39 +1,43 @@
 from django.shortcuts import render
+from .models import Donation, Institution
+from django.db.models import Sum  # Import funkcji agregującej
+
 
 def index(request):
-    return render(request, 'index.html')
+    total_bags = Donation.objects.aggregate(Sum('quantity'))['quantity__sum'] or 0
+    supported_organizations = Institution.objects.count()
+
+    # Pobieranie instytucji według typu
+    foundations = Institution.objects.filter(type=Institution.FUNDACJA)
+    ngos = Institution.objects.filter(type=Institution.ORGANIZACJA_POZARZADOWA)
+    local_collections = Institution.objects.filter(type=Institution.ZBIORKA_LOKALNA)
+
+    context = {
+        'total_bags': total_bags,
+        'supported_organizations': supported_organizations,
+        'foundations': foundations,
+        'ngos': ngos,
+        'local_collections': local_collections,
+    }
+    return render(request, 'index.html', context)
+
 
 def login(request):
     return render(request, 'login.html')
 
+
 def register(request):
     return render(request, 'register.html')
 
+
 def form(request):
     return render(request, 'form.html')
+
 
 def form_confirmation(request):
     return render(request, 'form-confirmation.html')
 
 
-# to są widoki testowe
-def form1(request):
-    return render(request, 'form1.html')
-
-def form_confirmation1(request):
-    return render(request, 'form-confirmation1.html')
-
-def index1(request):
-    return render(request, 'index1.html')
-
-def login1(request):
-    return render(request, 'login1.html')
-
-def register1(request):
-    return render(request, 'register1.html')
-
 def base(request):
     return render(request, 'base.html')
 
-def base_static(request):
-    return render(request, 'base_static.html')
