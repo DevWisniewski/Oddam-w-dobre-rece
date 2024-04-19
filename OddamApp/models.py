@@ -33,7 +33,7 @@ class Institution(models.Model):
         choices=INSTITUTION_TYPE_CHOICES,
         default=FUNDACJA
     )  # Typ instytucji, z wartością domyślną jako 'fundacja'
-    categories = models.ManyToManyField(Category)  # Kategorie darów, które instytucja może przyjmować
+    categories = models.ManyToManyField(Category)  # Kat    egorie darów, które instytucja może przyjmować
 
     def __str__(self):
         return self.name
