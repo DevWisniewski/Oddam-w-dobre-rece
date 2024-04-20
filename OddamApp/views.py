@@ -1,8 +1,16 @@
-from django.shortcuts import render
+from django.contrib.auth.models import User
+from django.shortcuts import render, redirect
 from .models import Donation, Institution
 from django.db.models import Sum  # Import funkcji agregującej
 from django.core.paginator import Paginator
-
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from django.contrib.auth import login as django_login
+from django.shortcuts import render, redirect
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login as django_login
+from django.contrib.auth import login as auth_login
+from .forms import CustomUserCreationForm
 
 
 def index(request):
@@ -36,13 +44,33 @@ def index(request):
     return render(request, 'index.html', context)
 
 
-
-def login(request):
+def login_view(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        password = request.POST['password']
+        user = authenticate(request, username=email, password=password)
+        if user is not None:
+            login(request, user)
+            return redirect('/')  # Przekierowanie na stronę główną
+        else:
+            # Jeśli użytkownik nie istnieje, przekieruj do rejestracji
+            return redirect('register')
     return render(request, 'login.html')
 
 
 def register(request):
-    return render(request, 'register.html')
+    if request.method == 'POST':
+        form = CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            auth_login(request, user)
+            return redirect('/')
+        else:
+            return render(request, 'register.html', {'form': form})
+    else:
+        form = CustomUserCreationForm()
+        return render(request, 'register.html', {'form': form})
+
 
 
 def form(request):
@@ -55,4 +83,3 @@ def form_confirmation(request):
 
 def base(request):
     return render(request, 'base.html')
-
