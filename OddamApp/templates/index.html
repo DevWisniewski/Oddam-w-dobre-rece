@@ -67,7 +67,7 @@
         </div>
     </div>
 
-    <li><a href="register/#register" class="btn btn--small btn--highlighted">Załóż konto</a></li>
+    <a href="register/#register" class="btn btn--small btn--highlighted">Załóż konto</a>
 </section>
 
 <section id="about-us" class="about-us">
@@ -103,13 +103,14 @@
         </li>
         {% endfor %}
     </ul>
-    <!-- Pagination
+    <!-- Pagination -->
     <ul class="help--slides-pagination">
-        <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>
-        <li><a href="#" class="btn btn--small btn--without-border" data-page="2">2</a></li>
-        <li><a href="#" class="btn btn--small btn--without-border" data-page="3">3</a></li>
+        {% for i in foundations.paginator.page_range %}
+            <li>
+                <a href="?page_foundation={{ i }}#help" class="btn btn--small btn--without-border {% if foundations.number == i %}active{% endif %}">{{ i }}</a>
+            </li>
+        {% endfor %}
     </ul>
-    -->
 </div>
 
 <!-- SLIDE 2 dla organizacji pozarządowych -->
@@ -126,15 +127,14 @@
         </li>
         {% endfor %}
     </ul>
-    <!-- Pagination
+    <!-- Pagination -->
     <ul class="help--slides-pagination">
-        <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>
-        <li><a href="#" class="btn btn--small btn--without-border" data-page="2">2</a></li>
-        <li><a href="#" class="btn btn--small btn--without-border" data-page="3">3</a></li>
-        <li><a href="#" class="btn btn--small btn--without-border" data-page="4">4</a></li>
-        <li><a href="#" class="btn btn--small btn--without-border" data-page="5">5</a></li>
+        {% for i in ngos.paginator.page_range %}
+            <li>
+                <a href="?page_ngo={{ i }}#help" class="btn btn--small btn--without-border {% if ngos.number == i %}active{% endif %}">{{ i }}</a>
+            </li>
+        {% endfor %}
     </ul>
-    -->
 </div>
 
 <!-- SLIDE 3 dla lokalnych zbiórek -->
@@ -151,12 +151,14 @@
         </li>
         {% endfor %}
     </ul>
-    <!-- Pagination
+    <!-- Pagination -->
     <ul class="help--slides-pagination">
-        <li><a href="#" class="btn btn--small btn--without-border active" data-page="1">1</a></li>
-        <li><a href="#" class="btn btn--small btn--without-border" data-page="2">2</a></li>
+        {% for i in local_collections.paginator.page_range %}
+            <li>
+                <a href="?page_local_collection={{ i }}#help" class="btn btn--small btn--without-border {% if local_collections.number == i %}active{% endif %}">{{ i }}</a>
+            </li>
+        {% endfor %}
     </ul>
-    -->
 </div>
 
 </section>
