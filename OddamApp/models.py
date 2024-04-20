@@ -36,7 +36,11 @@ class Institution(models.Model):
     categories = models.ManyToManyField(Category)  # Kat    egorie darów, które instytucja może przyjmować
 
     def __str__(self):
-        return self.name
+        return f"{self.name} ({self.get_type_display()})"
+
+    class Meta:
+        verbose_name = "instytucja"
+        verbose_name_plural = "instytucje"
 
 
 class Donation(models.Model):
