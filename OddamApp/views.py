@@ -11,7 +11,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login as django_login
 from django.contrib.auth import login as auth_login
 from .forms import CustomUserCreationForm
-
+from django.contrib.auth import logout
 
 def index(request):
     total_bags = Donation.objects.aggregate(Sum('quantity'))['quantity__sum'] or 0
@@ -83,3 +83,16 @@ def form_confirmation(request):
 
 def base(request):
     return render(request, 'base.html')
+
+
+def profile(request):
+    return render(request, 'profile.html')
+
+
+def settings(request):
+    return render(request, 'settings.html')
+
+
+def logout_view(request):
+    logout(request)
+    return redirect('/')  # Przekierowanie na stronę główną po wylogowaniu
