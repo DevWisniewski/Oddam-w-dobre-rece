@@ -1,4 +1,29 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% block title %}Profil{% endblock %}
+{% block title %}Profil użytkownika{% endblock %}
+
+{% block content %}
+<section id="user-profile" class="profile">
+    <h2 class="profile-header">
+        Witaj<br/>
+        <span>{{ user.username }}</span>
+    </h2>
+    <div class="user-info">
+        <div class="user-detail">
+            <div class="user-detail-row clearfix">
+                <span class="user-detail-label">Imię:</span>
+                <span class="user-detail-value">{{ user.first_name }}</span>
+            </div>
+            <div class="user-detail-row clearfix">
+                <span class="user-detail-label">Nazwisko:</span>
+                <span class="user-detail-value">{{ user.last_name }}</span>
+            </div>
+            <div class="user-detail-row clearfix">
+                <span class="user-detail-label">Email:</span>
+                <span class="user-detail-value">{{ user.email }}</span>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
