@@ -1,17 +1,12 @@
-from django.contrib.auth.models import User
-from django.shortcuts import render, redirect
-from .models import Donation, Institution
-from django.db.models import Sum  # Import funkcji agregującej
 from django.core.paginator import Paginator
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from django.shortcuts import render, redirect
-from django.contrib.auth import login as django_login
-from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login as django_login
 from django.contrib.auth import login as auth_login
+from django.db.models import Sum  # Import funkcji agregującej
+
 from .forms import CustomUserCreationForm
-from django.contrib.auth import logout
+from .models import Donation, Institution, Category
+
 
 def index(request):
     total_bags = Donation.objects.aggregate(Sum('quantity'))['quantity__sum'] or 0
@@ -72,9 +67,10 @@ def register(request):
         return render(request, 'register.html', {'form': form})
 
 
-
 def form(request):
-    return render(request, 'form.html')
+    categories = Category.objects.all()
+    institutions = Institution.objects.all().prefetch_related('categories')
+    return render(request, 'form.html', {'categories': categories, 'institutions': institutions})
 
 
 def form_confirmation(request):

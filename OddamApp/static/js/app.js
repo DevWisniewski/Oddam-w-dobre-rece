@@ -60,7 +60,7 @@
      * TODO: callback to page change event
      */
     changePage(e) {
-       // e.preventDefault(); // Wyłączono, aby umożliwić standardowe działanie linków w paginacji
+       // e.preventDefault(); // Disabled to allow standard link behavior in pagination.
       const page = e.target.dataset.page;
 
       console.log(page);
@@ -220,28 +220,21 @@
      */
     updateForm() {
       this.$step.innerText = this.currentStep;
-
-      // TODO: Validation
-
       this.slides.forEach(slide => {
         slide.classList.remove("active");
-
         if (slide.dataset.step == this.currentStep) {
           slide.classList.add("active");
         }
       });
 
+      if (this.currentStep === 3) {
+        filterOrganizations();  // Call the filtering function when entering step 3
+      }
+
       this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 6;
       this.$step.parentElement.hidden = this.currentStep >= 6;
-
-      // TODO: get data from inputs and show them in summary
     }
 
-    /**
-     * Submit form
-     *
-     * TODO: validation, send data to server
-     */
     submit(e) {
       e.preventDefault();
       this.currentStep++;
@@ -252,4 +245,27 @@
   if (form !== null) {
     new FormSteps(form);
   }
+
+  // Function to filter organizations based on selected categories
+  function filterOrganizations() {
+    const selectedCategories = new Set(
+      Array.from(document.querySelectorAll('input[name="categories"]:checked'))
+      .map(input => input.dataset.categoryName)
+    );
+
+    const organizations = document.querySelectorAll('.organization');
+    organizations.forEach(org => {
+      const organizationCategories = org.dataset.categories.split(', ');
+      const isVisible = organizationCategories.some(category => selectedCategories.has(category));
+
+      org.style.display = isVisible ? 'block' : 'none';
+    });
+  }
+
+  document.querySelectorAll('input[name="categories"]').forEach(input => {
+    input.addEventListener('change', filterOrganizations);
+  });
+
+  // Invoke the filtering function at initial page load
+  filterOrganizations();
 });
