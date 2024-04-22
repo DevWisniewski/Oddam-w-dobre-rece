@@ -60,7 +60,6 @@
     
             <form action="form-confirmation.html" method="post">
                     <!-- STEP 1: class .active is switching steps -->
-                    <!-- STEP 1: class .active is switching steps -->
                     <div data-step="1" class="active">
                         <h3>Zaznacz, co chcesz oddać:</h3>
                         {% for category in categories %}
@@ -114,49 +113,36 @@
                         </div>
                     </div>
             
+
                     <!-- STEP 4 -->
                     <div data-step="4">
                         <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
-                    
                         <div class="form-section form-section--columns">
                             <div class="form-section--column">
                                 <h4>Adres odbioru</h4>
                                 <div class="form-group form-group--inline">
-                                    <label> Ulica <input type="text" name="address" /> </label>
+                                    <label>Ulica <input type="text" name="address" required /></label>
                                 </div>
-                    
                                 <div class="form-group form-group--inline">
-                                    <label> Miasto <input type="text" name="city" /> </label>
+                                    <label>Miasto <input type="text" name="city" required /></label>
                                 </div>
-                    
                                 <div class="form-group form-group--inline">
-                                    <label>
-                                        Kod pocztowy <input type="text" name="postcode" />
-                                    </label>
+                                    <label>Kod pocztowy <input type="text" name="postcode" required /></label>
                                 </div>
-                    
                                 <div class="form-group form-group--inline">
-                                    <label>
-                                        Numer telefonu <input type="phone" name="phone" />
-                                    </label>
+                                    <label>Numer telefonu <input type="tel" name="phone" required /></label>
                                 </div>
                             </div>
-                    
                             <div class="form-section--column">
                                 <h4>Termin odbioru</h4>
                                 <div class="form-group form-group--inline">
-                                    <label> Data <input type="date" name="data" /> </label>
+                                    <label>Data <input type="date" name="date" required /></label>
                                 </div>
-                    
                                 <div class="form-group form-group--inline">
-                                    <label> Godzina <input type="time" name="time" /> </label>
+                                    <label>Godzina <input type="time" name="time" required /></label>
                                 </div>
-                    
                                 <div class="form-group form-group--inline">
-                                    <label>
-                                        Uwagi dla kuriera
-                                        <textarea name="more_info" rows="5"></textarea>
-                                    </label>
+                                    <label>Uwagi dla kuriera <textarea name="more_info" rows="5"></textarea></label>
                                 </div>
                             </div>
                         </div>
@@ -165,7 +151,7 @@
                             <button type="button" class="btn next-step">Dalej</button>
                         </div>
                     </div>
-        
+            
                     <!-- STEP 5 -->
                     <div data-step="5">
                         <h3>Podsumowanie Twojej darowizny</h3>
@@ -175,11 +161,11 @@
                                 <ul>
                                     <li>
                                         <span class="icon icon-bag"></span>
-                                        <span class="summary--text">4 worki ubrań w dobrym stanie dla dzieci</span>
+                                        <span id="summary-bags" class="summary--text">...</span>
                                     </li>
                                     <li>
                                         <span class="icon icon-hand"></span>
-                                        <span class="summary--text">Dla fundacji "Mam marzenie" w Warszawie</span>
+                                        <span id="summary-organization" class="summary--text">...</span>
                                     </li>
                                 </ul>
                             </div>
@@ -187,18 +173,18 @@
                                 <div class="form-section--column">
                                     <h4>Adres odbioru:</h4>
                                     <ul>
-                                        <li>Prosta 51</li>
-                                        <li>Warszawa</li>
-                                        <li>99-098</li>
-                                        <li>123 456 789</li>
+                                        <li id="summary-address"></li>
+                                        <li id="summary-postcode"></li>
+                                        <li id="summary-city"></li>
+                                        <li id="summary-phone"></li>
                                     </ul>
                                 </div>
                                 <div class="form-section--column">
                                     <h4>Termin odbioru:</h4>
                                     <ul>
-                                        <li>13/12/2018</li>
-                                        <li>15:40</li>
-                                        <li>Brak uwag</li>
+                                        <li id="summary-date"></li>
+                                        <li id="summary-time"></li>
+                                        <li id="summary-comments"></li>
                                     </ul>
                                 </div>
                             </div>
@@ -208,6 +194,11 @@
                             <button type="submit" class="btn">Potwierdzam</button>
                         </div>
                     </div>
+
+        
+                    
+            
+            
             </form>
         
         </div>
